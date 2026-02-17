@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理后台 - AI HACKER</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .sidebar-link {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            color: #4a5568;
+            transition: all 0.2s;
+            border-radius: 6px;
+            margin-bottom: 4px;
+        }
+        .sidebar-link:hover {
+            background-color: #f7fafc;
+            color: #000;
+        }
+        .sidebar-link.active {
+            background-color: #000;
+            color: #fff;
+        }
+        .sidebar-link svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 12px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    
+    <div class="flex h-screen">
+        <!-- 侧边栏 -->
+        <aside class="w-64 bg-white border-r border-gray-200 flex flex-col">
+            <!-- Logo -->
+            <div class="h-16 flex items-center px-6 border-b border-gray-200">
+                <div class="flex items-center space-x-2">
+                    <img src="images/logo.svg" alt="Logo" class="w-6 h-6">
+                    <span class="font-bold text-lg site-logo-text">AI HACKER</span>
+                </div>
+            </div>
+            
+            <!-- 导航菜单 -->
+            <nav class="flex-1 px-4 py-6 overflow-y-auto">
+                <a href="#dashboard" class="sidebar-link" onclick="showSection('dashboard')">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                    </svg>
+                    仪表盘
+                </a>
+                <a href="#products" class="sidebar-link" onclick="showSection('products')">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                    </svg>
+                    商品管理
+                </a>
+                <a href="#orders" class="sidebar-link" onclick="showSection('orders')">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                    </svg>
+                    订单管理
+                </a>
+                <a href="#users" class="sidebar-link" onclick="showSection('users')">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                    </svg>
+                    用户管理
+                </a>
+                <a href="#cardkeys" class="sidebar-link" onclick="showSection('cardkeys')">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/>
+                    </svg>
+                    卡密管理
+                </a>
+                <a href="#settings" class="sidebar-link" onclick="showSection('settings')">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    </svg>
+                    系统设置
+                </a>
+                <a href="#roles" class="sidebar-link" onclick="showSection('roles')">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                    </svg>
+                    权限管理
+                </a>
+            </nav>
+            
+            <!-- 底部 -->
+            <div class="p-4 border-t border-gray-200">
+                <button onclick="logout()" class="w-full flex items-center justify-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                    </svg>
+                    退出登录
+                </button>
+            </div>
+        </aside>
+
+        <!-- 主内容区 -->
+        <main class="flex-1 overflow-y-auto">
+            <!-- 顶部栏 -->
+            <header class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-8">
+                <h1 id="pageTitle" class="text-2xl font-light">仪表盘</h1>
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm text-gray-600" id="adminEmail">管理员</span>
+                </div>
+            </header>
+
+            <!-- 内容区域 -->
+            <div class="p-8">
+                <!-- 仪表盘 -->
+                <div id="dashboard" class="section hidden">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                        <div class="bg-white p-6 rounded-lg border border-gray-200">
+                            <div class="text-sm text-gray-500 mb-2">总订单数</div>
+                            <div class="text-3xl font-light" id="totalOrders">0</div>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg border border-gray-200">
+                            <div class="text-sm text-gray-500 mb-2">总用户数</div>
+                            <div class="text-3xl font-light" id="totalUsers">0</div>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg border border-gray-200">
+                            <div class="text-sm text-gray-500 mb-2">商品数量</div>
+                            <div class="text-3xl font-light" id="totalProducts">0</div>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg border border-gray-200">
+                            <div class="text-sm text-gray-500 mb-2">总销售额</div>
+                            <div class="text-3xl font-light" id="totalRevenue">￥0</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 商品管理 -->
+                <div id="products" class="section hidden">
+                    <div class="bg-white rounded-lg border border-gray-200">
+                        <div class="p-6 border-b border-gray-200 flex justify-between items-center">
+                            <h2 class="text-lg font-medium">商品列表</h2>
+                            <button id="addProductBtn" onclick="showAddProductModal()" class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" style="display: none;">添加商品</button>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full">
+                                <thead class="bg-gray-50 border-b border-gray-200">
+                                    <tr>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">ID</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">商品名称</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">价格</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">库存</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="productsTable" class="divide-y divide-gray-200">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 订单管理 -->
+                <div id="orders" class="section hidden">
+                    <div class="bg-white rounded-lg border border-gray-200">
+                        <div class="p-6 border-b border-gray-200">
+                            <h2 class="text-lg font-medium">订单列表</h2>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full">
+                                <thead class="bg-gray-50 border-b border-gray-200">
+                                    <tr>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">订单号</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">商品</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">邮箱</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">金额</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">状态</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">时间</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="ordersTable" class="divide-y divide-gray-200">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 用户管理 -->
+                <div id="users" class="section hidden">
+                    <div class="bg-white rounded-lg border border-gray-200">
+                        <div class="p-6 border-b border-gray-200 flex justify-between items-center">
+                            <h2 class="text-lg font-medium">用户列表</h2>
+                            <button id="addUserBtn" onclick="showAddUserModal()" class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" style="display: none;">添加用户</button>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full">
+                                <thead class="bg-gray-50 border-b border-gray-200">
+                                    <tr>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">ID</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">邮箱</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">角色</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="usersTable" class="divide-y divide-gray-200">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 卡密管理 -->
+                <div id="cardkeys" class="section hidden">
+                    <div class="bg-white rounded-lg border border-gray-200 mb-6">
+                        <div class="p-6 border-b border-gray-200">
+                            <h2 class="text-lg font-medium mb-4">筛选商品</h2>
+                            <div id="productFilterContainer"></div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg border border-gray-200">
+                        <div class="p-6 border-b border-gray-200 flex justify-between items-center">
+                            <h2 class="text-lg font-medium">卡密列表</h2>
+                            <div class="flex space-x-3">
+                                <button id="addCardKeyBtn" onclick="showAddCardKeyModal()" class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" style="display: none;">添加卡密</button>
+                                <button id="addBatchCardKeyBtn" onclick="showBatchAddCardKeyModal()" class="px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700" style="display: none;">批量添加</button>
+                            </div>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full">
+                                <thead class="bg-gray-50 border-b border-gray-200">
+                                    <tr>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">卡密 ID</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">商品 ID</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">卡密</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">状态</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">订单号</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">使用时间</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="cardKeysTable" class="divide-y divide-gray-200">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 系统设置 -->
+                <div id="settings" class="section hidden">
+                    <div class="bg-white rounded-lg border border-gray-200 mb-6">
+                        <div class="p-6 border-b border-gray-200">
+                            <h2 class="text-lg font-medium">系统设置</h2>
+                            <p class="text-sm text-gray-500 mt-1">仅超级管理员可修改</p>
+                        </div>
+                        <div class="p-6">
+                            <!-- 网站配置 -->
+                            <div class="mb-8">
+                                <h3 class="text-base font-medium mb-4 pb-2 border-b border-gray-200">网站配置</h3>
+                                <div class="space-y-4 max-w-2xl">
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">网站名称</label>
+                                        <input type="text" id="siteName" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-black" placeholder="AI HACKER">
+                                        <p class="text-xs text-gray-500 mt-1">将显示在网站标题、导航栏等位置</p>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">网站公告</label>
+                                        <textarea id="siteAnnouncement" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-black" rows="3" placeholder="在首页顶部滚动显示的公告信息，可填写客服联系方式等"></textarea>
+                                        <p class="text-xs text-gray-500 mt-1">留空则不显示公告，支持填写客服联系方式</p>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">页脚版权信息</label>
+                                        <input type="text" id="footerCopyright" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-black" placeholder="© 2026 AI HACKER. All rights reserved.">
+                                        <p class="text-xs text-gray-500 mt-1">显示在页面底部的版权信息</p>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">购买间隔时间（分钟）</label>
+                                        <input type="number" id="purchaseInterval" min="0" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-black" placeholder="5">
+                                        <p class="text-xs text-gray-500 mt-1">同一邮箱购买相同商品的最小时间间隔，设置为 0 表示不限制</p>
+                                    </div>
+                                    <div>
+                                        <label class="flex items-center space-x-2 cursor-pointer">
+                                            <input type="checkbox" id="enableRegister" class="w-4 h-4 text-black border-gray-300 rounded focus:ring-black">
+                                            <span class="text-sm font-medium text-gray-700">允许新用户注册</span>
+                                        </label>
+                                        <p class="text-xs text-gray-500 mt-1 ml-6">关闭后注册页面将不可访问</p>
+                                    </div>
+                                    <div class="pt-2">
+                                        <button id="saveSiteConfigBtn" onclick="saveSiteConfig()" class="px-6 py-2 bg-black text-white rounded hover:bg-gray-800" style="display: none;">
+                                            保存配置
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 邮件配置 -->
+                            <div class="mb-8">
+                                <h3 class="text-base font-medium mb-4 pb-2 border-b border-gray-200">邮件服务配置</h3>
+                                <div class="space-y-4 max-w-2xl">
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">SMTP 服务器</label>
+                                        <input type="text" id="smtpHost" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-black" placeholder="smtp.example.com">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">SMTP 端口</label>
+                                        <input type="number" id="smtpPort" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-black" placeholder="587">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">邮箱地址</label>
+                                        <input type="email" id="smtpUsername" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-black" placeholder="your-email@example.com">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">SMTP 密码/授权码</label>
+                                        <input type="password" id="smtpPassword" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-black" placeholder="输入SMTP密码或授权码">
+                                        <p class="text-xs text-gray-500 mt-1">QQ邮箱请使用SMTP授权码,不是登录密码</p>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">发件人名称</label>
+                                        <input type="text" id="smtpFrom" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-black" placeholder="AI HACKER <your-email@example.com>">
+                                    </div>
+                                    <div class="flex items-center space-x-3 pt-4">
+                                        <button id="saveEmailConfigBtn" onclick="saveEmailConfig()" class="px-6 py-2 bg-black text-white rounded hover:bg-gray-800" style="display: none;">
+                                            保存配置
+                                        </button>
+                                        <button id="testEmailBtn" onclick="testEmailConfig()" class="px-6 py-2 border border-gray-300 text-gray-700 rounded hover:bg-gray-50" style="display: none;">
+                                            测试邮件
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 法律文档配置 -->
+                            <div class="mb-8">
+                                <h3 class="text-base font-medium mb-4 pb-2 border-b border-gray-200">法律文档</h3>
+                                <div class="space-y-4 max-w-4xl">
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">服务条款</label>
+                                        <textarea id="termsOfService" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-black font-mono text-sm" rows="10" placeholder="请输入服务条款内容，支持 Markdown 格式"></textarea>
+                                        <p class="text-xs text-gray-500 mt-1">将显示在服务条款页面</p>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">隐私政策</label>
+                                        <textarea id="privacyPolicy" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-black font-mono text-sm" rows="10" placeholder="请输入隐私政策内容，支持 Markdown 格式"></textarea>
+                                        <p class="text-xs text-gray-500 mt-1">将显示在隐私政策页面</p>
+                                    </div>
+                                    <div class="pt-2">
+                                        <button id="saveLegalConfigBtn" onclick="saveLegalConfig()" class="px-6 py-2 bg-black text-white rounded hover:bg-gray-800" style="display: none;">
+                                            保存配置
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 权限管理 -->
+                <div id="roles" class="section hidden">
+                    <div class="bg-white rounded-lg border border-gray-200">
+                        <div class="p-6 border-b border-gray-200 flex justify-between items-center">
+                            <div>
+                                <h2 class="text-lg font-medium">角色权限管理</h2>
+                                <p class="text-sm text-gray-500 mt-1">仅超级管理员可编辑</p>
+                            </div>
+                            <button id="addRoleBtn" onclick="showAddRoleModal()" class="px-4 py-2 bg-black text-white rounded hover:bg-gray-800" style="display: none;">
+                                添加角色
+                            </button>
+                        </div>
+                        <div class="p-6">
+                            <div id="rolesContainer" class="space-y-6">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/site-config.js"></script>
+    <script src="js/permissions.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

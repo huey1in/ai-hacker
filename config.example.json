@@ -1,0 +1,16 @@
+{
+  "server": {
+    "port": "8080",
+    "mode": "release"
+  },
+  "email": {
+    "smtp_host": "",
+    "smtp_port": 587,
+    "username": "",
+    "password": "",
+    "from": ""
+  },
+  "security": {
+    "jwt_secret": "your-secret-key-change-this-in-production"
+  }
+}

@@ -1,0 +1,22 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 终端窗口外框 -->
+  <rect x="6" y="10" width="36" height="28" stroke="black" stroke-width="2" fill="none"/>
+  
+  <!-- 窗口顶部栏 -->
+  <line x1="6" y1="16" x2="42" y2="16" stroke="black" stroke-width="2"/>
+  
+  <!-- 三个窗口按钮 -->
+  <circle cx="10" cy="13" r="1.5" fill="black"/>
+  <circle cx="15" cy="13" r="1.5" fill="black"/>
+  <circle cx="20" cy="13" r="1.5" fill="black"/>
+  
+  <!-- 命令行提示符 > -->
+  <path d="M 12 22 L 16 25 L 12 28" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- 光标 -->
+  <rect x="19" y="23" width="2" height="4" fill="black"/>
+  
+  <!-- 代码行装饰 -->
+  <line x1="24" y1="25" x2="36" y2="25" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="12" y1="32" x2="28" y2="32" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>查询订单 - AI HACKER</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- 顶部导航 -->
+    <nav class="sticky top-0 bg-white/80 backdrop-blur-md border-b border-gray-100 z-50">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <img src="images/logo.svg" alt="AI HACKER Logo" class="w-8 h-8">
+                <div class="text-xl font-bold tracking-tight site-logo-text">AI HACKER</div>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="index.html" class="nav-link">全部商品</a>
+                <a href="order.html" class="nav-link" style="color: #000;">查询订单</a>
+            </div>
+            <div id="authButtons" class="hidden md:flex items-center space-x-4">
+                <!-- 未登录状态 -->
+                <div id="notLoggedIn" class="flex items-center space-x-4">
+                    <a href="login.html" class="text-sm border border-gray-200 px-4 py-2 rounded hover:bg-gray-50">登录</a>
+                    <a href="register.html" class="text-sm bg-black text-white px-4 py-2 rounded hover:bg-gray-800">注册</a>
+                </div>
+                <!-- 已登录状态 -->
+                <div id="loggedIn" class="hidden items-center space-x-4">
+                    <span id="userEmail" class="text-sm text-gray-600"></span>
+                    <button onclick="logout()" class="text-sm border border-gray-200 px-4 py-2 rounded hover:bg-gray-50">退出</button>
+                </div>
+            </div>
+            <!-- 移动端汉堡菜单按钮 -->
+            <button id="mobileMenuBtn" class="md:hidden p-2">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+        <!-- 移动端菜单 -->
+        <div id="mobileMenu" class="hidden md:hidden border-t border-gray-100 bg-white">
+            <div class="px-6 py-4 space-y-3">
+                <a href="index.html" class="block py-2 text-gray-700 hover:text-black">全部商品</a>
+                <a href="order.html" class="block py-2 text-gray-700 hover:text-black">查询订单</a>
+                <div id="mobileAuthButtons" class="pt-3 border-t border-gray-100">
+                    <!-- 未登录状态 -->
+                    <div id="mobileNotLoggedIn" class="space-y-2">
+                        <a href="login.html" class="block text-center py-2 border border-gray-200 rounded hover:bg-gray-50">登录</a>
+                        <a href="register.html" class="block text-center py-2 bg-black text-white rounded hover:bg-gray-800">注册</a>
+                    </div>
+                    <!-- 已登录状态 -->
+                    <div id="mobileLoggedIn" class="hidden space-y-2">
+                        <div id="mobileUserEmail" class="text-sm text-gray-600 py-2"></div>
+                        <button onclick="logout()" class="w-full text-center py-2 border border-gray-200 rounded hover:bg-gray-50">退出</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 查询区域 -->
+    <section class="max-w-4xl mx-auto px-6 py-12">
+        <div class="mb-8">
+            <h1 class="text-3xl font-light mb-2">查询订单</h1>
+        </div>
+
+        <!-- 查询表单 -->
+        <div class="card-container p-8 mb-8">
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium mb-2">订单号</label>
+                    <input type="text" id="orderIdInput" placeholder="请输入订单号" class="input-field">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-2">邮箱地址</label>
+                    <input type="email" id="orderEmailInput" placeholder="请输入购买时使用的邮箱" class="input-field">
+                </div>
+                <button id="searchOrderBtn" class="w-full bg-black text-white py-3 rounded-lg hover:bg-gray-800 transition-colors">
+                    查询订单
+                </button>
+            </div>
+        </div>
+
+        <!-- 订单结果区域 -->
+        <div id="orderList" class="space-y-4">
+            <h2 class="text-xl font-medium mb-4">订单记录</h2>
+            <!-- 订单列表将通过 JS 动态加载 -->
+        </div>
+    </section>
+
+    <!-- 底部简易 Footer -->
+    <footer class="border-t border-gray-100 bg-white mt-20">
+        <div class="max-w-6xl mx-auto px-6 py-12 text-center text-sm">
+            <h4 class="font-bold text-gray-900 mb-4 site-name">AI HACKER</h4>
+            <p class="text-gray-400 footer-copyright">© 2026 <span class="site-name">AI HACKER</span>. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/site-config.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

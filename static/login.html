@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录 - AI HACKER</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- 顶部导航 -->
+    <nav class="sticky top-0 bg-white/80 backdrop-blur-md border-b border-gray-100 z-50">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <img src="images/logo.svg" alt="AI HACKER Logo" class="w-8 h-8">
+                <div class="text-xl font-bold tracking-tight site-logo-text">AI HACKER</div>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="index.html" class="nav-link">全部商品</a>
+                <a href="order.html" class="nav-link">查询订单</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="login.html" class="text-sm border border-gray-200 px-4 py-2 rounded hover:bg-gray-50">登录</a>
+                <a href="register.html" class="text-sm bg-black text-white px-4 py-2 rounded hover:bg-gray-800">注册</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 登录表单 -->
+    <section class="max-w-md mx-auto px-6 py-20">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-light mb-2">登录账户</h1>
+            <p class="text-gray-500 text-sm">欢迎回来</p>
+        </div>
+
+        <div class="card-container p-8">
+            <form id="loginForm" class="space-y-5">
+                <div>
+                    <label class="block text-sm font-medium mb-2">邮箱地址</label>
+                    <input type="email" id="loginEmail" placeholder="your@email.com" class="input-field" required>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-2">密码</label>
+                    <input type="password" id="loginPassword" placeholder="输入密码" class="input-field" required>
+                </div>
+                <div class="flex items-center justify-between text-sm">
+                    <label class="flex items-center">
+                        <input type="checkbox" class="mr-2">
+                        <span class="text-gray-600">记住我</span>
+                    </label>
+                    <a href="forgot-password.html" class="text-black hover:underline">忘记密码?</a>
+                </div>
+                <button type="submit" class="w-full bg-black text-white py-3 rounded-lg hover:bg-gray-800 transition-colors">
+                    登录
+                </button>
+            </form>
+            <div class="mt-6 text-center text-sm text-gray-600">
+                还没有账户? <a href="register.html" class="text-black font-medium hover:underline">立即注册</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部简易 Footer -->
+    <footer class="border-t border-gray-100 bg-white mt-20">
+        <div class="max-w-6xl mx-auto px-6 py-12 text-center text-sm">
+            <h4 class="font-bold text-gray-900 mb-4 site-name">AI HACKER</h4>
+            <p class="text-gray-400 footer-copyright">© 2026 <span class="site-name">AI HACKER</span>. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/site-config.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
